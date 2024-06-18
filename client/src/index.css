@@ -1,0 +1,114 @@
+body {
+  max-width: 100vw;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #4F4A45;
+  background-color: #F6F4EB;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+.header {
+    font-weight: bold;
+    margin-top: 10px;
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2px solid #4F4A45;
+}
+
+.logo {
+  font-size: 60px;
+  margin-left: 100px;
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 200px;
+  margin-right: 200px;
+}
+
+.forms {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-line {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.person-header {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: larger;
+}
+
+.person-btn {
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+.person-btn:hover {
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.links span:hover{
+  cursor: pointer;
+}
+
+.duty-header {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-size: larger;
+  font-weight: bold;
+}
+
+.duty-header span:hover {
+  cursor: pointer;
+}
+
+.duty-person-info {
+  padding: 10px;
+  background-color: #AF8F6F;
+  border-radius: 5px;
+}
+
+.scrolled::-webkit-scrollbar {
+  display: none;
+}
+
+button {
+  color: #AF8F6F;
+}
+
+.edit-duty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(60, 60, 60, 0.8);
+  z-index: 1;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+
+
