@@ -9,7 +9,6 @@ import DutyInfo from "./components/DutyInfo";
 import { hasPersonGotDuty } from "./utils/utils";
 
 
-
 function App() {
 
   const [content, setContent] = useState<boolean>(true)
@@ -17,29 +16,31 @@ function App() {
   const [dutyList, setDutyList] = useState<Duty[]>([])
   const [alert, setAlert] = useState<boolean>(false)
 
+  console.log(process.env.REACT_APP_BACKEND_CONNECTION)
+
   useEffect(() => {
     const getPeople = async () => {
-      const people = await fetch('http://localhost:5000/api/person/')
+      const people = await fetch(`${process.env.REACT_APP_BACKEND_CONNECTION}/api/person`)
       const data: Person[] = await people.json()
       setPersonList(data)
       return data
     }
     const getDuty = async () => {
-      const duty = await fetch('http://localhost:5000/api/duty/')
+      const duty = await fetch(`${process.env.REACT_APP_BACKEND_CONNECTION}/api/duty/`)
       const data: Duty[] = await duty.json()
       setDutyList(data)
       return data
     }
     getPeople()
     getDuty()
-  })
+  }, [])
 
   const changeContent = (content: boolean) => {
       setContent(content)
   }
 
   const addPerson = async (person: NewPerson) => {
-    const request = await fetch('http://localhost:5000/api/person', {
+    const request = await fetch(`${process.env.REACT_APP_BACKEND_CONNECTION}/api/person`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(person)
@@ -53,7 +54,7 @@ function App() {
       setAlert(true)
       return false
     }
-    const request = await fetch(`http://localhost:5000/api/person/${id}`, {
+    const request = await fetch(`${process.env.REACT_APP_BACKEND_CONNECTION}/api/person/${id}`, {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' }
     })
@@ -62,7 +63,7 @@ function App() {
   }
 
   const addDuty = async (duty: NewDuty) => {
-    const request = await fetch('http://localhost:5000/api/duty', {
+    const request = await fetch(`${process.env.REACT_APP_BACKEND_CONNECTION}/api/duty`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(duty)
@@ -72,7 +73,7 @@ function App() {
   }
 
   const deleteDuty = async (id: string) => {
-    const request = await fetch(`http://localhost:5000/api/duty/${id}`, {
+    const request = await fetch(`${process.env.REACT_APP_BACKEND_CONNECTION}/api/duty/${id}`, {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' }
     })
@@ -81,7 +82,7 @@ function App() {
   }
 
   const editDuty = async (duty: NewDuty, id?: string ) => {
-    const request = await fetch(`http://localhost:5000/api/duty/${id}`, {
+    const request = await fetch(`${process.env.REACT_APP_BACKEND_CONNECTION}/api/duty/${id}`, {
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(duty)
