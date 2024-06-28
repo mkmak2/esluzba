@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import NewDutyForm from './NewDutyForm'
 import { NewDuty, Duty, Person } from '../types'
-import { hover } from '@testing-library/user-event/dist/hover'
 import EditDutyForm from './EditDutyForm'
 
 interface Props {

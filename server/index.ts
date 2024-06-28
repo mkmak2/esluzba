@@ -17,5 +17,5 @@ app.use('/api/person', personRoutes)
 app.use('/api/duty', dutyRoutes)
 
 app.listen(port, () => {
-  console.log(`[server]: Server is running at http://localhost:${port}`);
+  console.log(`[server]: Server is running at port: ${port}`);
 });
