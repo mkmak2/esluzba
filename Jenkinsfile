@@ -19,7 +19,7 @@ pipeline {
             steps {
                 echo "Buildong server and DB"
                 sh '''
-                cd server
+                cd db
                 docker pull postgres
                 docker compose -f postgress-compose.yaml up
                 '''
