@@ -1,4 +1,4 @@
 test('Simple test', () => {
     const data = 5
-   expect(data).toBe(4)
+   expect(data).toBe(5)
 })
