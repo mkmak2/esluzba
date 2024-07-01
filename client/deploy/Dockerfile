@@ -1,7 +1,8 @@
-FROM node:20.11.0
+FROM node
 
 WORKDIR /app
 
-RUN npm install -g serve
+COPY ./artefakty .
 
-CMD [ "serve", "-s", "build" ]
+RUN npm install -g serve
+CMD serve -s build

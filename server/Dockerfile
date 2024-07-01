@@ -18,5 +18,4 @@ RUN npm install
 
 COPY . /server
 
-
 CMD ["npx", "ts-node", "index.ts"]  

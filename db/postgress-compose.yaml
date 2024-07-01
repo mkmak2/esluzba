@@ -11,9 +11,7 @@ services:
       - 5432:5432 
 
   server:
-    build:
-      context: ../server
-      dockerfile: Dockerfile
+    image: esluzba_server:latest
     depends_on: 
       - db
     command: sh -c "npx prisma generate && npx prisma db push && npx ts-node index.ts"
