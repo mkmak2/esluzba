@@ -11,7 +11,7 @@ services:
       - 5432:5432 
 
   server:
-    image: esluzba_server:latest
+    image: kmaku4/esluzba_server:latest
     depends_on: 
       - db
     command: sh -c "npx prisma generate && npx prisma db push && npx ts-node index.ts"
