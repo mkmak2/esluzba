@@ -20,6 +20,7 @@ pipeline {
                 echo "Buildong server and DB"
                 sh '''
                 cd db
+                echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin
                 docker pull postgres
                 docker compose -f postgress-compose.yaml up
                 '''
