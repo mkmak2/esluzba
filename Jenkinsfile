@@ -2,7 +2,6 @@ pipeline {
     agent any
 
     environment {
-        DOCKERHUB_CREDENTIALS = credentials('ed5a039b-dabd-4818-ae00-253b94a704a3')
         GITHUB_CREDENTIALS = credentials('6e415a35-ecdd-4b7f-9655-90d1a0ece9f6')
     }
 
@@ -20,7 +19,6 @@ pipeline {
                 echo "Buildong server and DB"
                 sh '''
                 cd db
-                echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin
                 docker pull postgres
                 docker compose -f postgress-compose.yaml up -d
                 '''
@@ -69,7 +67,7 @@ pipeline {
         always{
             echo "Archiving artifacts"
 
-            archiveArtifacts artifacts: 'artifact_*.tar.gz', fingerprint: true
+            archiveArtifacts artifacts: 'artefakty_*.tar.gz', fingerprint: true
             sh '''
             chmod +x cleanup.sh
             ./cleanup.sh
