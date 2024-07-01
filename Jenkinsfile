@@ -46,7 +46,7 @@ pipeline {
                 sh '''
                 cd client
                 docker build -t esluzba_testing:latest -f ./testing/Dockerfile .
-                docker run --name test_container esluzba_testing:latest
+                docker run --network host --name test_container esluzba_testing:latest
                 docker logs test_container > log_test.txt
                 '''
             }
