@@ -44,6 +44,7 @@ pipeline {
             steps {
                 echo "Testing"
                 sh '''
+                cd client
                 docker build -t esluzba_testing:latest -f ./testing/Dockerfile .
                 docker run --name test_container esluzba_testing:latest
                 docker logs test_container > log_test.txt
@@ -55,6 +56,7 @@ pipeline {
             steps {
                 echo "Deploy"
                 sh '''
+                    cd client
                     docker build -t esluzba_deploy:latest -f ./deploy/Dockerfile .
                     docker run -p 3000:3000 -d --rm --name deploy_container esluzba_deploy:latest
                     docker logs deploy_container > deploy.txt
