@@ -34,7 +34,7 @@ pipeline {
                 cd client
                 docker build -t esluzba_building:latest -f ./building/Dockerfile .
                 docker run --name build_container esluzba_building:latest
-                docker cp build_container:/esluzba/build ./artefakty
+                docker cp build_container:/app/build ./artefakty
                 docker logs build_container > log_build.txt
                 '''
             }
