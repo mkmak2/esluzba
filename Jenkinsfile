@@ -22,7 +22,7 @@ pipeline {
                 cd db
                 echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin
                 docker pull postgres
-                docker compose -f postgress-compose.yaml up
+                docker compose -f postgress-compose.yaml up -d
                 '''
             }
         }
