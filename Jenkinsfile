@@ -57,7 +57,8 @@ pipeline {
                     cd client
                     docker build -t esluzba_deploy:latest -f ./deploy/Dockerfile .
                     docker run -p 3000:3000 -d --rm --name deploy_container esluzba_deploy:latest
-                    docker logs deploy_container > deploy.txt
+                    docker logs deploy_container > log_deploy.txt
+                    tar -czf artefakty_$TIMESTAMP.tar.gz log_build.txt log_test.txt log_deploy.txt artefakty
                 '''
             }
         }
