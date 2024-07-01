@@ -68,7 +68,7 @@ pipeline {
         always{
             echo "Archiving artifacts"
 
-            archiveArtifacts artifacts: 'artefakty_*.tar.gz', fingerprint: true
+            archiveArtifacts artifacts: 'client/artefakty_*.tar.gz', fingerprint: true
             sh '''
             chmod +x cleanup.sh
             ./cleanup.sh
