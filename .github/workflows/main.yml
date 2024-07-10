@@ -26,7 +26,7 @@ jobs:
           ${{ runner.os }}-buildx-${{ github.repository }}-
           
     - name: Build Server image
-      run: cd db && docker compose -f postgress-compose.yaml build
+      run: cd server && docker build -t esluzba_server .
 
     - name: Run server
       run: cd db && docker compose -f postgress-compose.yaml up
