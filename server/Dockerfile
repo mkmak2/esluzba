@@ -15,7 +15,7 @@ ENV DB_URL $DB_URL
 COPY package.json /server/package.json
 COPY package-lock.json /server/package-lock.json
 RUN npm install
-RUN npm install --save-dev
+RUN npm install --save-dev @types/express @types/express
 
 COPY . /server
 
