@@ -1,0 +1,44 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v2
+
+    - name: Cache Docker layers
+      uses: actions/cache@v2
+      with:
+        path: /tmp/.buildx-cache
+        key: ${{ runner.os }}-buildx-${{ github.repository }}-${{ github.sha }}
+        restore-keys: |
+          ${{ runner.os }}-buildx-${{ github.repository }}-
+          
+    - name: Build Server image
+      run: cd db && docker compose -f postgress-compose.yaml build
+
+    - name: Run server
+      run: cd db && docker compose -f postgress-compose.yaml up
+
+    - name: Build app
+      run: cd client/building && docker build -t esluzba_building .
+
+    - name: Build test
+      run: cd client/testing && docker build -t esluzba_testing .
+
+    - name: Build app
+      run: docker run --network host esluzba_testing
+
+    - name: Stop and remove container
+      run: docker stop esluzba_testing && docker compose -f db/postgress-compose.yaml down -v
